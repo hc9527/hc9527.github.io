@@ -1,16 +1,502 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
+<html>
+	<head>
+		<meta charset="UTF-8" />
     <link rel="icon" href="./logo.png" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>H&L</title>
-    <script type="module" crossorigin src="./static/js/index-1cf93fb6.js"></script>
-    <link rel="stylesheet" href="./static/css/index-7dd45b78.css">
-  </head>
-  <body>
-    <div id="app"></div>
-    
-  </body>
+		<style>
+			html,body {
+          margin: 0;
+          overflow: hidden;
+          background: black;
+      }
+
+      #container {
+          position: relative;
+          width: 100vw;
+          height: 100vh;
+      }
+
+      #mask {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: radial-gradient(circle at center, transparent 40%, black 100%);
+          pointer-events: none;
+      }
+      .card {
+          opacity: 0;
+          position: absolute;
+          top: 50%;
+          width: 50%;
+          max-width: 600px;
+          height: auto;
+          transform: translateY(-50%);
+          /* background: #aaa; */
+          pointer-events: none;
+          color: #eee;
+      }
+      .card1 {
+        left: 10%;
+      }
+      .card2 {
+        right: 10%;
+      }
+      .text {
+        font-size: 18px;
+        line-height: 30px;
+      }
+      .container {
+          position: absolute;
+          bottom: 100px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 24px;
+          height: 24px;
+          opacity: 0;
+      }
+      .chevron {
+          position: absolute;
+          width: 28px;
+          height: 8px;
+          opacity: 0;
+          transform: scale3d(0.5, 0.5, 0.5);
+          animation: move 3s ease-out infinite;
+      }
+      .chevron:first-child {
+          animation: move 3s ease-out 1s infinite;
+      }
+      .chevron:nth-child(2) {
+          animation: move 3s ease-out 2s infinite;
+      }
+      .chevron:before,
+      .chevron:after {
+          content: ' ';
+          position: absolute;
+          top: 0;
+          height: 100%;
+          width: 51%;
+          background: #fff;
+      }
+      .chevron:before {
+          left: 0;
+          transform: skew(0deg, 30deg);
+      }
+      .chevron:after {
+          right: 0;
+          width: 50%;
+          transform: skew(0deg, -30deg);
+      }
+      @keyframes move {
+          25% {
+              opacity: 1;
+          }
+          33% {
+              opacity: 1;
+              transform: translateY(30px);
+          }
+          67% {
+              opacity: 1;
+              transform: translateY(40px);
+          }
+          100% {
+              opacity: 0;
+              transform: translateY(55px) scale3d(0.5, 0.5, 0.5);
+          }
+      }
+      @keyframes pulse {
+          to {
+              opacity: 1;
+          }
+      }
+      @media screen and (max-device-width: 768px) {
+        a, .text {
+          font-size: 24px !important;
+          line-height: 36px;
+        }
+      }
+		</style>
+	</head>
+	<body>
+    <div id="container"></div>
+    <div id="mask"></div>
+    <div class="container">
+      <div class="chevron"></div>
+      <div class="chevron"></div>
+      <div class="chevron"></div>
+    </div>
+    <div style="position: fixed;bottom: 10px;left: 0;width: 100%;text-align: center;">
+      <a href="https://beian.miit.gov.cn/" target="_blank" style="color: #888;text-decoration: unset;">赣ICP备19012553号-1</a>
+    </div>
+    <div id="text1" class="card card1">
+      <h1>
+        H C L J Y
+      </h1>
+      <div class="text">
+        我在 Amazon 当软件工程师的时候，故事是这样的：
+        <br/>
+        那时我和女朋友住在一起，正在家里远程工作。忽然同事给我发来了紧急消息：”我们的服务出现了 SEV 2 级别的故障！需要所有的人马上协助！“我们组的应用全挂掉了。
+        <br/>
+        当我还在费力的寻找修复方法的时候，忽然闻到隔壁房间的的焦味，防火报警器开始鸣叫。
+      </div>
+    </div>
+    <div id="text2" class="card card2">
+      <h1>
+        L J Y H C
+      </h1>
+      <div class="text">
+        “彦祖！着火了！快来帮忙！”我听到女朋友大喊。现在一个难题在我面前——是恢复一个重要的 Amazon 服务，还是救公寓的火。
+        <br/>
+        我的脑海中忽然出现了 Amazon 著名的领导力准则”客户至上“，有很多的客户还依赖我们的服务，我不能让他们失望！所以着火也不管了，女朋友喊我也无所谓，我开始 debug 这个线上问题。
+      </div>
+    </div>
+    <div id="text3" class="card card1">
+      <h1>
+        H & L
+      </h1>
+      <div class="text">
+        但是忽然，公寓的烟味消失，火警也停了。我的女朋友走进了房间，让我震惊的是，她摘下了自己的假发，她是 Jeff Bezos（Amazon 老板）假扮的！
+        <br/>
+        “我对你坚持顾客至上的原则感到十分骄傲”，说完，他递给我一张五美金的亚马逊礼品卡，从我家窗户翻了出去，跳上了一辆 Amazon 会员服务的小货车，一溜烟离开了。
+        <br/>
+        虽然现在我已不在 Amazon 工作，但这些经验我终身难忘。你们同意么？
+      </div>
+    </div>
+    <script async src="https://unpkg.com/es-module-shims@1.8.0/dist/es-module-shims.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three/examples/jsm/",
+          "tween.js/": "https://cdnjs.cloudflare.com/ajax/libs/tween.js/"
+        }
+      }
+    </script>
+		<script type="module">
+			import * as THREE from 'three';
+	    import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+	    import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
+      import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+      import * as TWEEN from 'tween.js/20.0.0/tween.esm.min.js';
+
+      const clock = new THREE.Clock();
+      const scene = new THREE.Scene();
+      const renderer = new THREE.WebGLRenderer({
+          antialias: true, // 抗锯齿
+      });
+      renderer.setSize( window.innerWidth, window.innerHeight );
+      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.setClearColor('#000');
+      scene.background = new THREE.Color('#1b1e1e');
+      document.getElementById('container').appendChild( renderer.domElement );
+
+      // 创建解析器
+      const dracoLoader = new DRACOLoader();
+      dracoLoader.setDecoderPath('./draco/');
+      const loader = new GLTFLoader();
+      loader.setDRACOLoader(dracoLoader);
+
+      // 创建镜头
+      const width = window.innerWidth
+      const height = window.innerHeight
+      const scale = 500
+      const camera = new THREE.OrthographicCamera( -width / scale, width / scale, height / scale, -height / scale, 1, 10 );
+      camera.position.set(0, 0, 5);
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      const cameraPerspectiveHelper = new THREE.CameraHelper( camera );
+      cameraPerspectiveHelper.visible = false;
+			scene.add( cameraPerspectiveHelper );
+      const camera2 = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 1, 100 );
+			camera2.position.z = 15;
+      const controls = new OrbitControls( camera2, renderer.domElement );
+      const text1 = document.getElementById("text1");
+      const text2 = document.getElementById("text2");
+      const text3 = document.getElementById("text3");
+
+
+      let model, model2, particles, modelLight;
+      const timeline1 = 6
+      const timeline2 = 3.5
+      const originY = 7.6
+      const originScale = 0.012
+      let yValue = 0;
+      let rValue = 0;
+      let gsapDuration = 0.3;
+      let loading = false;
+      const originColorMap = {}
+      const originColor = []
+      const originLine = []
+      const gaoda = './models/gaoda2.glb'
+
+      loadModel(gaoda);
+
+
+      function loadModel(modelPath) {
+        loader.load(modelPath, (gltf) => {
+          model = gltf.scene;
+          model.scale.set(originScale,originScale,originScale)
+          model.position.set(1, -originY, 0)
+          // 设置模型的初始map透明度
+          model.traverse((child) => {
+              if (child.isMesh) {
+                originColorMap[child.id] = child.material.color.getHex()
+              }
+          });
+          model.traverse((child) => {
+              if (child.isMesh) {
+                originColor.push(child.id)
+                child.material.color.set(0x888888)
+              } else if (child.isLineSegments) {
+                originLine.push(child.id)
+                child.material.opacity = 0
+                child.material.transparent = true
+              }
+          });
+          // console.log(originColorMap)
+          scene.add(model);
+          updateCameraY(0, 0)
+        });
+      }
+
+      // 创建灯光
+      const ambientLight = new THREE.HemisphereLight("white", "darkslategrey", 0);
+      scene.add(ambientLight);
+
+      // 创建直射光源
+      const directionalLight = new THREE.DirectionalLight(0xf7f7f7, 0.4);
+      directionalLight.position.set(3, 3, 3); // 设置光源位置
+      scene.add(directionalLight);
+      const lightHelper = new THREE.DirectionalLightHelper(directionalLight, 1);
+      lightHelper.visible = false;
+      scene.add(lightHelper);
+
+      // 监听鼠标移动事件
+      let mouseX = 0, mouseY = 0;
+      document.addEventListener('mousemove', function(event) {
+          mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+          mouseY = - (event.clientY / window.innerHeight) * 2 + 1;
+      });
+
+      function createParticles() {
+        // 创建粒子材质
+        var particleMaterial = new THREE.PointsMaterial({
+            color: 0xFFFFFF,
+            size: 0.9, // 点的大小
+            transparent: true,
+            opacity: 1,
+            depthTest: false
+        });
+        // 创建粒子几何体
+        var particleGeometry = new THREE.BufferGeometry();
+        var particleCount = 1000; // 粒子数量
+        // 生成随机的粒子位置
+        var positions = new Float32Array(particleCount * 3);
+        for (var i = 0; i < positions.length; i += 3) {
+            var x = (Math.random() - 0.5) * 10;
+            var y = (Math.random() - 0.5) * 10;
+            var z = (Math.random() - 0.5) * 10 - 2;
+            positions[i] = x;
+            positions[i + 1] = y;
+            positions[i + 2] = z;
+        }
+        // 将位置数据设置给几何体
+        particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        // 创建粒子系统
+        particles = new THREE.Points(particleGeometry, particleMaterial);
+        scene.add(particles);
+      }
+      createParticles()
+
+
+      function getOpacity(yValue, lowerRange, upperRange) {
+        let opacity = 0;
+        if (yValue >= lowerRange && yValue <= upperRange) {
+            // 在范围内时，根据 y 值计算 opacity
+            opacity = Math.abs((yValue - lowerRange) / (upperRange - lowerRange));
+        }
+        return opacity
+      }
+      function getOpacity2(yValue, lowerRange, upperRange) {
+        let opacity = 0;
+        if (yValue >= lowerRange && yValue <= upperRange) {
+            // 在范围内时，根据 y 值计算 opacity
+            opacity = 1 - Math.abs((yValue - lowerRange) / (upperRange - lowerRange));
+        }
+        return opacity
+      }
+
+      function scrollChange(deltaY) {
+        yValue += deltaY * 0.003;
+        yValue = Math.min(timeline1 + timeline2, Math.max(0, yValue));
+        if (yValue !== 0 && yValue !== (timeline1 + timeline2) && rValue <= 6.6) {
+          rValue += deltaY * 0.002;
+        } else {
+          rValue = yValue === 0 ? 0 : 6.6
+        }
+        // console.log(yValue, rValue)
+        updateCameraY(yValue, rValue);
+      }
+      window.addEventListener('wheel', function(event) {
+          // 根据滚轮事件更新 y 值
+          scrollChange(event.deltaY)
+      });
+      // 定义变量来跟踪触摸开始时的坐标
+      let startY;
+
+      // 添加触摸开始事件监听器
+      window.addEventListener('touchstart', (event) => {
+          // 获取触摸的第一个触点（通常是单指触摸）
+          const touch = event.touches[0];
+          // 记录触摸开始时的垂直坐标
+          startY = touch.clientY;
+          gsapDuration = 0
+      });
+
+      // 添加触摸移动事件监听器
+      window.addEventListener('touchmove', (event) => {
+          // 获取触摸的第一个触点
+          const touch = event.touches[0];
+          // 计算垂直滑动距离
+          const deltaY = touch.clientY - startY;
+          // 在控制台中打印滑动距离
+          console.log(`垂直滑动距离: ${deltaY}px`);
+          // 在这里您可以执行滑动相关的操作
+          scrollChange(-deltaY / 10)
+      });
+
+      // 添加触摸结束事件监听器
+      window.addEventListener('touchend', () => {
+          // 清除起始坐标
+          startY = null;
+      });
+
+      // 淡入模型
+      function fadeInModel(yValue) {
+        const progress = getOpacity(yValue, timeline1 + 1, timeline1 + timeline2)
+        const colorLength = Math.ceil(progress * originColor.length)
+        const lineLength = Math.ceil(progress * originLine.length)
+        const newColorArr = colorLength === 0 ? [] : originColor.slice(-colorLength)
+        const newLineArr = lineLength === 0 ? [] : originLine.slice(-lineLength)
+        // console.log(newColorArr, newLineArr)
+        model.traverse((child) => {
+          if (child.isMesh) {
+            if (newColorArr.includes(child.id)) {
+              child.material.color.set(originColorMap[child.id])
+            } else {
+              child.material.color.set(0x888888)
+            }
+          } else if (child.isLineSegments) {
+            if (newLineArr.includes(child.id)) {
+              child.material.opacity = progress
+              child.material.transparent = true
+            } else {
+              child.material.opacity = 0
+              child.material.transparent = true
+            }
+          }
+        });
+      }
+
+      // 使用GSAP创建动画
+      function updateCameraY(yValue, rValue) {
+        gsap.to(scene.rotation, { duration: gsapDuration, y: rValue, ease: "power1.inOut" });
+        gsap.to(model.position, { duration: gsapDuration, y: Math.min(timeline1 - originY, yValue - originY), ease: "power1.inOut" });
+        if (yValue >= timeline1) {
+          fadeInModel(yValue)
+          const realScale = originScale * (1 - ((yValue - timeline1) / (timeline2 * 1.5)))
+          gsap.to(model.scale, { duration: gsapDuration, x: realScale, y: realScale, z: realScale, ease: "power1.inOut" });
+        } else {
+          gsap.to(model.scale, { duration: gsapDuration, x: originScale, y: originScale, z: originScale, ease: "power1.inOut" });
+        }
+        // 根据 y 值展示不同的文本
+        gsap.to('.container', { duration: gsapDuration, opacity: getOpacity2(yValue, 0, 0.3) });
+        gsap.to(text1, { duration: gsapDuration, opacity: getOpacity2(yValue, 0, 3) });
+        gsap.to(text2, { duration: gsapDuration, opacity: getOpacity(yValue, 4, 6) });
+        gsap.to(text3, { duration: gsapDuration, opacity: getOpacity(yValue, timeline1 + timeline2 - 1.5, timeline1 + timeline2) });
+      }
+      // 创建流星数组
+      var meteors = [];
+
+      // 创建流星的函数
+      function createMeteor() {
+          // 创建流星的材质
+          var meteorMaterial = new THREE.PointsMaterial({
+              color: 0xFFFFFF,
+              size: 2, // 流星的大小
+              transparent: true,
+              opacity: 1
+          });
+          // 创建流星的几何体
+          var meteorGeometry = new THREE.BufferGeometry();
+          // 随机生成流星的位置
+          var x = Math.random() * 20 - 10;
+          var y = Math.random() * 20 - 10;
+          var z = Math.random() * 10 - 5;
+
+          // 流星的轨迹，通常是一条直线
+          var positions = new Float32Array([x, y, z, x - 1, y - 1, z - 1]);
+
+          meteorGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+          // 创建流星对象
+          var meteor = new THREE.Points(meteorGeometry, meteorMaterial);
+
+          // 将流星对象添加到场景中
+          scene.add(meteor);
+
+          // 将流星对象添加到数组中
+          meteors.push(meteor);
+      }
+
+      // 创建多个流星
+      var meteorCount = 10;
+      for (var i = 0; i < meteorCount; i++) {
+          createMeteor();
+      }
+
+      // 播放动画
+      function animate() {
+        requestAnimationFrame( animate );
+
+        // 将相机的位置与鼠标位置关联
+        camera.position.x += (mouseX - camera.position.x) * 0.05;
+        camera.position.y += (-mouseY - camera.position.y) * 0.05;
+        camera.lookAt(scene.position);
+
+        // 在这里更新光源的方向
+        const lightDirection = new THREE.Vector3(3, 3, 3); // 光源初始方向
+        lightDirection.applyEuler(scene.rotation); // 将光源方向应用于场景的旋转
+        directionalLight.position.copy(lightDirection); // 设置光源的位置
+
+        // 更新流星的位置
+        for (var i = 0; i < meteors.length; i++) {
+            var meteor = meteors[i];
+            if (meteor.position.x < -10) {
+                // 如果流星移出视野，将其移除并重新生成
+                meteor.geometry.attributes.position.array = [];
+                createMeteor();
+                scene.remove(meteor); // 从场景中移除旧的流星
+                meteors.splice(i, 1); // 从数组中移除旧的流星
+            } else {
+                // 向左移动流星
+                meteor.position.x -= 0.02;
+            }
+        }
+
+        // 使粒子闪烁
+        particles.rotation.x += 0.001;
+        particles.rotation.y += 0.001;
+        renderer.render( scene, camera );
+        TWEEN.update()
+        // controls.update();
+        // renderer.render( scene, camera2 );
+      }
+      animate();
+		</script>
+	</body>
 </html>
